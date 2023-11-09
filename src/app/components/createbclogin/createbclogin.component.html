@@ -1,0 +1,65 @@
+<div class="outer" style="overflow-y: scroll;">
+    <div class="container" >
+        <div class="row">
+            <div class="offset-md-2  col-md-7 offset offset-md-3">
+                <div class="panel border bg-white" >
+                    <div class="panel-heading">
+                        <div class="mx-3 my-2 py-2 bordert"></div>
+                        <div class="text-center py-2">
+                           <a href="https://familycentral.com/" target="_blank" class="px-2"> <img src="assets/familycentral-logo.svg" style="width: 100px; height: 100px;"> </a>
+                        </div>
+                        <h3 class="pt-2 font-weight-bold">Register for FamilyCentral BO</h3>
+                    </div>
+                    <div class="panel-body p-5">
+                        <form [formGroup]="signupForm">
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input formControlName="firstName" type="text" placeholder="FirstName">
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['firstName'].dirty && signupForm.hasError('required','firstName')" class="text-danger">*FirstName is required</small>
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input formControlName="lastName" type="text" placeholder="LastName">
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['lastName'].dirty && signupForm.hasError('required','lastName')" class="text-danger">*LastName is required</small>
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-envelope p-2"></span>
+                                    <input formControlName="email" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')" class="text-danger">*Email is required</small>
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-user-circle p-2"></span>
+                                    <input formControlName="userName" type="text" placeholder="Username">
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['userName'].dirty && signupForm.hasError('required','userName')" class="text-danger">*UserName is required</small>
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input formControlName="password"  [type]="type" placeholder="Password">
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')" class="text-danger">*Password is required</small>
+                            <div class="text-center pt-2">
+
+                                <button (click)="onSignup()" type="submit" class="btn btn-primary btn-block mt-1 w-50">Signup</button>
+                            </div>
+                            <!-- <div class="text-center pt-4 text-muted">Already have account ? <a id="forget" routerLink="/login">Log In</a></div> -->
+
+                        </form>
+                    </div>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

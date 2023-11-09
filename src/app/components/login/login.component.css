@@ -1,0 +1,62 @@
+
+
+
+
+
+
+
+.login-section {
+    background-color: #f8f9fa;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* This will make the section take up the full height of the viewport */
+}
+form{
+    width: 100%;
+    max-width: 500px;
+}
+.forgot-pass {
+    text-align: right;
+}
+.forgot-pass a{
+    text-align: right;
+    color:var(--primaryBlack);
+}
+.sign-in-btn{
+    text-align: center;
+	
+}
+.primary_btn { min-width: 155px;
+	/* display: block; */
+	width: 50%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #be3232, #d37638, #be3232);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	/* text-transform: uppercase; */
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.primary_btn:hover{
+	background-position: right;
+}
+
+.image-section {
+    background-image: url('/assets/SignupLoginimage.png');
+    /* Replace 'your-image.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* Adjust this to control the height of the image section */
+}

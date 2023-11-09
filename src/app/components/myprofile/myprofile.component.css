@@ -1,0 +1,98 @@
+.my-profile .content-area {
+    width: 100%;
+    max-width: 1170px;
+  }
+  
+  .my-profile.body-content {
+    justify-content: center ;
+    -ms-grid-row-align: flex-start ;
+    align-items: flex-start ;
+    padding: 35px ;
+  }
+  
+  .my-profile .account {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    background-color: white;
+    color: #1F223B;
+    padding: 20px;
+    float: none;
+  }
+  
+  .my-profile .label-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+    flex-direction: column;
+    padding-left: 10px;
+    font-size: 20px;
+  }
+  
+  .my-profile .label-group label {
+    color: #777;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: left;
+    font-weight: normal;
+  }
+  
+  .my-profile .primary_btn {
+    margin: 0 !important;
+  }
+  
+  .list-of-clients .light{
+    font-weight: 400 !important;
+  }
+  @media only screen and (min-width: 767px) {
+    .my-profile .heading {
+        font-size: 45px;
+        line-height: 45px;
+        color: #1f223b;
+        font-family: var(--sofiamed);
+        margin: 0 0 15px;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      gap:0;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    .my-profile {
+      margin: 0;
+      max-width: 100%;
+      padding: 0%;
+    }
+    .label-group {
+      justify-content: space-between;
+      width: 100%;
+    }
+    .my-profile .heading {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--yankeesBlue);
+      margin: 0 0 20px;
+  }
+  .my-profile .label-group {
+    display: inline-block;
+   width: 100%;
+   padding:0;
+    font-size: 18px;
+  }
+  .my-profile.body-content {
+    padding: 15px 15px 50px;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+  }
+  }

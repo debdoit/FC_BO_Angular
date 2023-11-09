@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Image Section -->
+        <div class="col-md-6 image-section"></div>
+        <!-- Login Section -->
+        <div class="col-md-6 login-section">
+            <img src="/assets/familycentral-logo.svg" alt="Website Logo" class="mb-3" width="150">
+            <h2 class="heading2 mb-3">Welcome to Family Central Backoffice</h2>
+            <form [formGroup]="loginForm">
+                <div class="form-group mb-3"
+                    [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
+                    <input formControlName="username" type="email" class="form-control form-control-lg" id="username"
+                        name="email" placeholder="Username" required>
+                    <!-- <span class="fa fa-user" style="position: absolute; top: 50%; transform: translateY(-50%); left: 15px;"></span> -->
+                </div>
+                <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                    class="text-danger">*Username is required</small>
+                <div class="form-group mb-3"
+                    [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
+                    <input formControlName="password" type="password" class="form-control form-control-lg" id="password"
+                        placeholder="password" required>
+                    <!-- <span class="fa fa-lock" style="position: absolute; top: 50%; transform: translateY(-50%); left: 15px;"></span> -->
+                </div>
+
+                <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                    class="text-danger">*Password is required</small>
+
+
+                <div class="form-group mb-3 forgot-pass">
+                    <div class="form-inline fr mt-4"> <a id="forgot" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" class="font-weight-bold">Forgot password?</a> </div>
+                </div>
+                <div class="sign-in-btn">
+                    <button (click)="onLogin()" class="primary_btn" type="submit">Sign in</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Forget your
+                        password?</span><br>
+                    <small>Please provide your E-mail we will send the reset link</small>
+                </p>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group pt-3">
+                    <div class="input-field"> <input [(ngModel)]="resetPasswordEmail"
+                            (ngModelChange)="checkValidEmail($event)" type="text" placeholder="Email"
+                            class="form-control form-control" style="border-radius: 10px;">
+                    </div>
+                </div>
+                <small *ngIf="!resetPasswordEmail" class="text-danger">*Email is required*</small>
+                <small *ngIf="!isValidEmail && resetPasswordEmail" class="text-danger">*Email is Invalid*</small>
+            </div>
+            <div class="modal-footer">
+                <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" (click)="confirmToSend()" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
