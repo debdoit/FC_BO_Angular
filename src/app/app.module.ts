@@ -17,6 +17,7 @@ import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { CustomerlistComponent } from './components/customerlist/customerlist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomerDashboardComponent } from './components/customerdashboard/customerdashboard.component';
+import { TrustedprofessionallistComponent } from './components/trustedprofessionallist/trustedprofessionallist.component';
 
 
 
@@ -31,7 +32,8 @@ import { CustomerDashboardComponent } from './components/customerdashboard/custo
     CreatebcloginComponent,
     MyprofileComponent,
     CustomerlistComponent,
-    CustomerDashboardComponent    
+    CustomerDashboardComponent ,
+    TrustedprofessionallistComponent   
 
   
   ],

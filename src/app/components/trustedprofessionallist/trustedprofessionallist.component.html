@@ -1,5 +1,40 @@
+
+
 <div class="search">
-    <input type="text" placeholder="Search TPA" class="search-input" style="border-radius: 20px;">
+    <input type="text" [(ngModel)]="searchQuery" (input)="search()"  class="search-input" style="border-radius: 20px;" placeholder="search TPA...">
     <!-- <i class="fas fa-search search-icon"></i> -->
     <!-- <span></span> -->
-</div>
+  </div>
+  
+  
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <body>
+    <table class="content-table" style=" margin: 0 auto; margin-top: 80px;">
+        <thead>
+          <tr>
+            <!-- <th>Rank</th> -->
+            <th>ID</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>rolename</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | slice: (currentPage - 1) * pageSize : (currentPage - 1) * pageSize + pageSize">
+              <td><a [routerLink]="['/home/customerdashboard', user.id]" style="text-transform: uppercase;">{{ user.id }}</a></td>
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.rolename }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+      </table>
+    </body>
+    <div>
+      <!-- <pagination-controls (pageChange)="onPageChange($event)" [itemsPerPage]="pageSize" [totalItems]="users.length"></pagination-controls> -->
+    </div>    
+  </html>
