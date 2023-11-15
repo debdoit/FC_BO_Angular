@@ -1,6 +1,6 @@
 <!-- <p>home works!</p> -->
 <!-- <div [ngClass]="status ? 'toggled' : "  class="fc_dashboard_wrapper"> -->
-<div  class="fc_dashboard_wrapper" id="wrapper">
+<div  class="fc_dashboard_wrapper" id="wrapper" >
     <!-- Fc side navbar -->
     <!-- [ngClass]="status ? 'toggled' : ''" -->
     <div  class="fc_sidenav">
@@ -10,10 +10,10 @@
                 <img class="logo_img" src="/assets/images/family-central-white.svg" width="106" height="58"
                     alt="Family Central" />
             </a> &nbsp;&nbsp;
-            <i class="fas fa-align-left primary-text fs-4 me-3" (click)="addToggle()" id="menu-toggle"></i>
+            <!-- <i class="fas fa-align-left primary-text fs-4 me-3" (click)="addToggle()" id="menu-toggle"></i> -->
         </div>
         
-        <div [ngClass]="status ? 'toggled' : ''" class="sidenav_menu">
+        <div  class="sidenav_menu">
             <ul class="menu">
                 <!-- <li>
             <a [routerLink]="">
@@ -43,9 +43,14 @@
                 <li>
                     <a [routerLink]="'promocodes'">
                         <span><i class="fas fa-gift"></i></span>
-
-                        <span>Promo Codes</span></a>
+                        <span (click)="addToggle()">Promo Codes</span>
+                        <p [ngClass]="status ? 'toggled' : ''"> <!-- Add a sub-dropdown list -->
+                            <li><a [routerLink]="'discount'"><i class="fas fa-percent"></i>Discounted Promocodes</a></li> <!-- Sub-dropdown item 1 -->
+                            <li><a [routerLink]="'free'"><i class="fas fa-star"></i>Free Promocodes</a></li> <!-- Sub-dropdown item 2 -->
+                        </p>
+                    </a>
                 </li>
+                
                 <ng-container *ngIf="role === 'Admin'">
                 <li>
                     <a [routerLink]="'createbclogin'">
@@ -108,10 +113,10 @@
                         </li> -->
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>
+                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2" style="font-size: 50px;"></i>
                             </a>
+                            
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <!-- <li><a class="dropdown-item" >Profile</a></li> -->
                                 <!-- <li><a class="dropdown-item" >Settings</a></li> -->
@@ -132,7 +137,7 @@
             </div>
         </div>
 
-        <div class="dynamic_routes">
+        <div class="dynamic_routes" >
             <router-outlet></router-outlet>
         </div>
 

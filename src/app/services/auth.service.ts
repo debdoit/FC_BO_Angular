@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   async signOut() {
-    debugger;
+    // debugger;
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to sign out.',
@@ -74,6 +74,13 @@ export class AuthService {
   getRoleFromToken(){
     if(this.userPayload)
     return this.userPayload.role;
+
+  }
+
+  
+  getIdFromToken(){
+    if(this.userPayload)
+    return this.userPayload.Id;
 
   }
 }

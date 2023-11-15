@@ -23,21 +23,21 @@
                         <div class="d-flex flex-column">
                             <!-- Name -->
                             <div class="d-flex align-items-center mb-2" style="margin-left: 15px;">
-                                <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1"
+                                <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1"
                                     style="color: black;">{{ user?.firstName }} {{ user?.lastName }}</a>
                             </div>
                             <!-- Info -->
                             <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                                <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
                                     style="margin-left: 15px; color: gray;">
                                     <i class="fas fa-phone-alt fs-4 me-1"></i>{{ user?.phoneNumber }}
                                 </a>
 
-                                <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                                <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
                                     style="color: gray;">
                                     <i class="fas fa-map-marker-alt fs-4 me-1"></i>{{ user?.zipCode }}
                                 </a>
-                                <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
+                                <a class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
                                     style="color: gray;">
                                     <i class="fas fa-envelope fs-4 me-1"></i>{{ user?.email }}
                                 </a>
@@ -202,7 +202,7 @@
             <div class="modal-body">
                 <div class="form-group pt-3">
                     <div class="input-field">
-                        <textarea placeholder="Add Notes" class="form-control" style="border-radius: 10px;"></textarea>
+                        <textarea [(ngModel)]="notes " placeholder="Add Notes" class="form-control" style="border-radius: 10px;"></textarea>
                     </div>
                 </div>
                 
@@ -211,7 +211,7 @@
             </div>
             <div class="modal-footer">
                 <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button"  class="btn btn-primary">Add</button>
+                <button (click)="addNotes()" type="button"  class="btn btn-primary" >Add</button>
             </div>
         </div>
     </div>
@@ -245,18 +245,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- <tr >
-                                            <td style="width: 50px;">{{notes[0].notes}}</td>
-                                            <td>{{notes[0].type}}</td>
-                                            <td>{{notes[0].createD_DATE}}</td>
-                                        </tr> -->
-                                        <tr *ngFor="let note of notes">
-                                            <td>{{ note.notes }}</td>
-                                            <td>{{ note.type }}</td>
-                                            <td>{{ note.createD_DATE | date: 'MM/dd/yyyy HH:mm' }}</td>
-                                          </tr>
+                                        <tr *ngFor="let noting of shownotes">
+                                            <td>
+                                                <textarea disabled>
+                                                    {{ noting.notes }}
+                                                </textarea>
+                                            </td>
+                                            <td>{{ noting.type }}</td>
+                                            <td>{{ noting.createD_DATE | date: 'MM/dd/yyyy HH:mm' }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
+                                
                                 
                                   
                                   

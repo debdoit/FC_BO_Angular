@@ -8,6 +8,7 @@ export class UserStoreService {
   private fullName$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
   private email$ = new BehaviorSubject<string>("");
+  private Id$ = new BehaviorSubject<string>("");
 
   constructor() { }
 
@@ -15,13 +16,13 @@ export class UserStoreService {
     return this.role$.asObservable();
   }
 
-  public getEmailFromStore() {
-    return this.email$.asObservable();
-  }
+
+
 
   public setRoleForStore(role: string) {
     this.role$.next(role);
   }
+
 
   public getFullNameFromStore() {
     return this.fullName$.asObservable();
@@ -31,7 +32,10 @@ export class UserStoreService {
     this.fullName$.next(fullName);
     
     console.log('Full Name set in UserStoreService:', fullName);
+    
   }
+
+
 
   
 }

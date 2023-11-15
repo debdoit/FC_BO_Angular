@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+ 
   hideShowPass() {
     this.isText = !this.isText;
     this.eyeIcon = this.isText ? "fa-eye" : "fa-eye-slash";
@@ -53,6 +54,8 @@ export class LoginComponent implements OnInit {
           console.log("token : ",tokenPayload);
           this.userStore.setFullNameFromStore(tokenPayload.unique_named);
           this.userStore.setRoleForStore(tokenPayload.role);
+          // this.userStore.setIdForStore(tokenPayload.Id);
+          // this.userStore.setemailForStore(tokenPayload.email);
           
           this.loginForm.reset();
           this.router.navigate(['home']).then(() => {

@@ -25,6 +25,7 @@ import { TrustedprofessionallistComponent } from './components/trustedprofession
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,   
@@ -33,7 +34,7 @@ import { TrustedprofessionallistComponent } from './components/trustedprofession
     MyprofileComponent,
     CustomerlistComponent,
     CustomerDashboardComponent ,
-    TrustedprofessionallistComponent   
+    TrustedprofessionallistComponent   ,
 
   
   ],

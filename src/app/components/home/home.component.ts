@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   public role!:string;
  
   //Sidebar toggle show hide function
-  status = false;
+  status = true;
   addToggle() {
     this.status = !this.status;
   }

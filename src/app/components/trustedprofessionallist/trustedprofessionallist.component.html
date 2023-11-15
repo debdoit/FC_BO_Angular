@@ -1,10 +1,36 @@
 
 
-<div class="search">
-    <input type="text" [(ngModel)]="searchQuery" (input)="search()"  class="search-input" style="border-radius: 20px;" placeholder="search TPA...">
-    <!-- <i class="fas fa-search search-icon"></i> -->
-    <!-- <span></span> -->
+
+<!--  -->
+
+<div class="card mb-7" style="background-color:  gainsboro;margin: 20px;margin-left: 40px;margin-right: 40px;">
+  <!--begin::Card body-->
+  <div class="card-body">
+      <!--begin::Compact form-->
+      <div class="d-flex align-items-center">
+          <form name="filter" id="filter" >
+          <!--begin::Input group-->
+          
+          <table>
+            <tbody><tr><th>
+            <input [(ngModel)]="searchQuery" type="text" style="width:500px;" class="form-control form-control-solid" id="fname1" name="fname1" placeholder="Search TPA">
+            <span *ngIf="searchAttempted && !isSearchValid()" id="warning-message" style="color: red;font-size: 15px;">Length is short, minimum length required is 3.</span>
+            <!-- <div *ngIf="searchAttempted && !isSearchValid() && noDataAvailable">No data available.</div> -->
+            </th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <!--end::Input group-->
+        <!--begin:Action-->
+        <th class="d-flex align-items-center">
+            <input (click)="search()" name="search_filter" type="submit" value="Search" title="Search" id="search_filter" class="btn btn-primary me-5">
+           
+            
+        </th></tr></tbody></table>
+        <!--end:Action-->
+          </form>
+
+      </div>
   </div>
+</div>
   
   
   
@@ -12,18 +38,21 @@
   <html lang="en">
   
   <body>
-    <table class="content-table" style=" margin: 0 auto; margin-top: 80px;">
-        <thead>
-          <tr>
+    <table *ngIf="users.length > 0" class="content-table" style="margin: 40px; margin-top: 80px;box-shadow: 80px 80px 100px rgb(218,218,218); border-radius: 50px;">
+        <thead >
+          <tr >
+           
             <!-- <th>Rank</th> -->
-            <th>ID</th>
-            <th>firstname</th>
-            <th>lastname</th>
-            <th>rolename</th>
-            <th>Email</th>
+            <th style="color: gray;">ID</th>
+            <th style="color: gray;">FIRST NAME</th>
+            <th style="color: gray;">LAST NAME</th>
+            <th style="color: gray;">ROLE</th>
+            <th style="color: gray;">EMAIL</th>
           </tr>
         </thead>
         <tbody>
+         
+          
             <tr *ngFor="let user of users | slice: (currentPage - 1) * pageSize : (currentPage - 1) * pageSize + pageSize">
               <td><a [routerLink]="['/home/customerdashboard', user.id]" style="text-transform: uppercase;">{{ user.id }}</a></td>
               <td>{{ user.firstname }}</td>
@@ -33,8 +62,18 @@
             </tr>
           </tbody>
       </table>
+      <div *ngIf="noDataAvailable && searchAttempted && users.length === 0" style="margin: 20px; color: red;">
+        No data available.
+      </div>
+      <!-- Pagination controls -->
+    
     </body>
     <div>
-      <!-- <pagination-controls (pageChange)="onPageChange($event)" [itemsPerPage]="pageSize" [totalItems]="users.length"></pagination-controls> -->
+      <div *ngIf="users.length > 0" class="pagination">
+        <button [disabled]="currentPage === 1" (click)="previousPage()" style="border: none;"><</button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button [disabled]="currentPage === totalPages" (click)="nextPage()" style="border: none;">></button>
+      </div>
+      
     </div>    
   </html>

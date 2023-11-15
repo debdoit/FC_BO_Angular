@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+// import { UserStoreService } from 'src/app/services/user-store.service';
 import Swal from 'sweetalert2';
 
 import { GetcustomerdetailsService } from 'src/app/services/getcustomerdetails.service';
@@ -13,7 +14,8 @@ import { GetcustomerdetailsService } from 'src/app/services/getcustomerdetails.s
 
 export class CustomerDashboardComponent implements OnInit {
   user: any; // Define a user variable to store the fetched user details
-  notes: any; // Define a 'notes' property to store the data
+  shownotes: any; // Define a 'notes' property to store the data
+  notes: string = '';
 // JSON: any;
  
 // note: any;
@@ -33,18 +35,69 @@ export class CustomerDashboardComponent implements OnInit {
         });
          // Fetch customer notes
          this.GetcustomerdetailsService.getCustomerNotes(userId).subscribe((notesData) => {
-          this.notes = notesData; // Assign the fetched notes to the notes variable
+          this.shownotes = notesData; // Assign the fetched notes to the notes variable
           console.log("note data :",notesData); 
          
         });
+
       }
     });
   }
+
   getInitials(name: string): string {
     const words = name.split(' ');
     const initials = words.map((word) => word[0]).join('');
     return initials.toUpperCase(); // Convert to uppercase
   }
+  addNotes() {
+    console.log('Before condition - Value of this.notes:', this.notes);
+    console.log('Before condition - Type of this.notes:', typeof this.notes);
+  
+    // Check if notes are not empty before sending the request
+    if (this.user?.id) {
+      const data = {
+        customerId: this.user?.id,
+        // console.log(customerId);
+        notes: this.notes
+      };
+      console.log("debasish",data.notes);
+  
+      // Send the data to the service method
+      // debugger;
+      this.GetcustomerdetailsService.AddCustomerNotes(data).subscribe({
+        next: (response) => {
+          // Handle the success response from the API (if needed)
+          console.log('Notes added successfully', response);
+           // Show SweetAlert success message
+           Swal.fire({
+            icon: 'success',
+            title: 'Notes added successfully!',
+            showConfirmButton: false,
+            didClose: () => {
+              location.reload();
+            }
+            // timer: 1500 // You can uncomment and adjust the timer as needed
+          });
+          
+         
+        },
+        error: (error) => {
+          // Handle the error response from the API (if needed)
+          console.error('Error adding notes:', error);
+          console.log(data)
+        }
+      });
+    } else {
+      // Show an error message if notes are empty or not a string
+      console.log('Invalid notes:', this.notes);
+    }
+  }
+  
+  
+  
+  
+
+ 
 
   alert(){
     Swal.fire({
@@ -54,8 +107,8 @@ export class CustomerDashboardComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Update',
       cancelButtonText: 'Cancel',
-      input: 'text',
-      inputPlaceholder: 'Enter your reason here',
+      // input: 'text',
+      // inputPlaceholder: 'Enter your reason here',
     }).then((result) => {
       if (result.isConfirmed) {
         const reason = result.value;
@@ -105,95 +158,6 @@ export class CustomerDashboardComponent implements OnInit {
   }
 
 
-  // handleCheckboxChange(checkbox: HTMLInputElement, value: string) {
-  //   if (value === 'delete') {
-  //     const isDeleteChecked = checkbox.checked;
-  //     if (isDeleteChecked) {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for deletion:', 'delete', checkbox);
-  //     } else {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for Un-deletion:', 'undelete', checkbox);
-  //     }
-  //   } else if (value === 'hold') {
-  //     const isHoldChecked = checkbox.checked;
-  //     if (isHoldChecked) {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for hold:', 'hold', checkbox);
-  //     } else {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for unhold:', 'unhold', checkbox);
-  //     }
-  //   } else if (value === 'display') {
-  //     const isDisplayChecked = checkbox.checked;
-  //     if (isDisplayChecked) {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for Display:', 'display', checkbox);
-  //     } else {
-  //       this.showConfirmationWithReason('Are you sure?', 'Please enter the reason for Un-Display:', 'undisplay', checkbox);
-  //     }
-  //   }
-  // }
- 
-  // showConfirmationWithReason(title: string, text: string, action: string, checkbox: HTMLInputElement) {
-  //   Swal.fire({
-  //     title: title,
-  //     text: text,
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'OK',
-  //     cancelButtonText: 'Cancel',
-  //     input: 'text',
-  //     inputPlaceholder: 'Reason',
-  //     inputValidator: (value) => {
-  //       if (!value) {
-  //         return 'Please enter a reason';
-  //       }
-  //     }
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       const reason = result.value || '';
-  //       this.sendApiRequest(action, reason);
-  //     } else {
-  //       checkbox.checked = !checkbox.checked;
-  //       // Additional logic if needed
-  //     }
-  //   });
-  // }
- 
-  // sendApiRequest(action: string, reason:string) {
-  //   const customerId = '{{ user?.id }}'; // Replace with your customer ID
- 
-  //   // Replace the URL with your API endpoint
-  //   this.http.post('https://localhost:7127/api/GDPRCustomer/UpdateGDPRCustomer', {
-  //     action: action,
-  //     reason: reason,
-  //     customer_id: customerId
-  //   }).subscribe(
-  //     (response) => {
-  //       // Handle the success response
-  //       if (response['message'] === 'success') {
-  //         Swal.fire({
-  //           title: 'Success',
-  //           text: 'The request was successful.',
-  //           icon: 'success',
-  //           confirmButtonText: 'OK'
-  //         });
-  //         location.reload(); // You might want to refresh the page after success
-  //       } else {
-  //         Swal.fire({
-  //           title: 'Error',
-  //           text: 'An error occurred',
-  //           icon: 'error',
-  //           confirmButtonText: 'OK'
-  //         });
-  //       }
-  //     },
-  //     (error) => {
-  //       console.error('API request error:', error);
-  //       Swal.fire({
-  //         title: 'Error',
-  //         text: 'An error occurred: ' + error.message,
-  //         icon: 'error',
-  //         confirmButtonText: 'OK'
-  //       });
-  //     }
-  //   );
-  // }
+  
 
 }
