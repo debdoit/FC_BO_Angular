@@ -78,9 +78,36 @@ export class AuthService {
   }
 
   
-  getIdFromToken(){
+  getUsernameFromToken(){
     if(this.userPayload)
-    return this.userPayload.Id;
+    return this.userPayload.Username;
 
   }
+  getFirstnameFromToken(){
+    if(this.userPayload)
+    return this.userPayload.FirstName;
+
+  }
+  getLastnameFromToken(){
+    if(this.userPayload)
+    return this.userPayload.LastName;
+
+  }
+  getEmailFromToken(){
+    if(this.userPayload)
+    return this.userPayload.Email;
+
+  }
+
+  getcontactnoFromToken(){
+    if(this.userPayload)
+    return this.userPayload.Contact;
+
+  }
+  getIdFromToken(){
+    if(this.userPayload)
+    return this.userPayload.nameid;
+
+  }
+
 }

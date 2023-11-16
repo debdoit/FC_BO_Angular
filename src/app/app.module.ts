@@ -18,6 +18,14 @@ import { CustomerlistComponent } from './components/customerlist/customerlist.co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomerDashboardComponent } from './components/customerdashboard/customerdashboard.component';
 import { TrustedprofessionallistComponent } from './components/trustedprofessionallist/trustedprofessionallist.component';
+import { DataTablesModule } from 'angular-datatables';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -35,6 +43,7 @@ import { TrustedprofessionallistComponent } from './components/trustedprofession
     CustomerlistComponent,
     CustomerDashboardComponent ,
     TrustedprofessionallistComponent   ,
+   
 
   
   ],
@@ -47,7 +56,13 @@ import { TrustedprofessionallistComponent } from './components/trustedprofession
     CommonModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgxPaginationModule // Correctly configure the ToastrModule here
+    NgxPaginationModule ,
+    DataTablesModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatTableModule, MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   // providers: [
