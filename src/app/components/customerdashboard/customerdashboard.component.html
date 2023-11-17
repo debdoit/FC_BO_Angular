@@ -23,8 +23,8 @@
                         <div class="d-flex flex-column">
                             <!-- Name -->
                             <div class="d-flex align-items-center mb-2" style="margin-left: 15px;">
-                                <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1"
-                                    style="color: black;">{{ user?.firstName }} {{ user?.lastName }}</a>
+                                <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1" style="color: black;">{{
+                                    user?.firstName }} {{ user?.lastName }}</a>
                             </div>
                             <!-- Info -->
                             <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
@@ -53,8 +53,9 @@
                                     style="box-shadow: 20px 20px 80px rgb(218,218,218);margin-top: 30px;margin: 20px;
         border-radius: 40px;">
                                     <div class="d-flex align-items-center">
-                                        <div class="fw-bold">{{ user?.dateOfBirthDay }}/{{ user?.dateOfBirthMonth }}/{{ user?.dateOfBirthYear }}</div>
-                                       
+                                        <div class="fw-bold">{{ user?.dateOfBirthDay }}/{{ user?.dateOfBirthMonth }}/{{
+                                            user?.dateOfBirthYear }}</div>
+
                                     </div>
                                     <div class="fw-semibold fs-6 text-gray-400">DATE OF BIRTH</div>
                                 </div>
@@ -74,163 +75,136 @@
                                     </div>
                                     <div class="fw-semibold fs-6 text-gray-400">ROLE</div>
                                 </div>
-
-                                <!-- ... -->
                             </div>
                         </div>
-                        <!-- ... -->
-
-                        <!--  -->
                     </div>
-                    <!-- ... -->
                 </div>
             </div>
-            <!-- ... -->
         </div>
     </div>
-
-    <!-- Modal AddCustomerNotes -->
-    <!-- ... -->
-    <!-- Modal ViewCustomerNotes -->
-    <!-- ... -->
-
     <div class="row">
-    <div class="col-xl-6">
-        <div class="card" id="kt_widget_5" style="box-shadow: 20px 20px 80px rgb(218,218,218); border-radius: 12px;">
-            <div class="card-body pb-0">
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center flex-grow-1">
-                        <div class="d-flex flex-column">
-                            <a href="#" class="text-dark fs-3 fw-bold">Customer Notes</a>
-                            <span class="text-gray-400 fw-bold"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="separator"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-5">
-                                <div class="pt-10 pb-10 mt-4">
-                                    <span class="badge badge-danger">0</span>
-                                    <span data-bs-toggle="modal" data-bs-target="#exampleModal">ADD NOTES</span>
-                                    <!-- Angular Directives/Components for Modals -->
-                                    <!-- ... -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-5">
-                                <div class="pt-10 pb-10 mt-4">
-                                    <span class="badge badge-danger">0</span>
-                                    <span data-bs-toggle="modal" data-bs-target="#showModal">SHOW NOTES</span>
-                                    <!-- Angular Directives/Components for Modals -->
-                                    <!-- ... -->
-                                </div>
+        <div class="col-xl-6">
+            <div class="card" id="kt_widget_5"
+                style="box-shadow: 20px 20px 80px rgb(218,218,218); border-radius: 12px;">
+                <div class="card-body pb-0">
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <div class="d-flex flex-column">
+                                <a href="#" class="text-dark fs-3 fw-bold">Customer Notes</a>
+                                <span class="text-gray-400 fw-bold"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="separator"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="d-flex align-items-center mb-5">
+                                    <div class="pt-10 pb-10 mt-4">
+                                        <span class="badge badge-danger">0</span>
+                                        <span data-bs-toggle="modal" data-bs-target="#exampleModal">ADD NOTES</span>
+                                        <!-- Angular Directives/Components for Modals -->
+                                        <!-- ... -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="d-flex align-items-center mb-5">
+                                    <div class="pt-10 pb-10 mt-4">
+                                        <span class="badge badge-danger">0</span>
+                                        <span data-bs-toggle="modal" data-bs-target="#showModal">SHOW NOTES</span>
+                                        <!-- Angular Directives/Components for Modals -->
+                                        <!-- ... -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card " id="kt_widget_5"
+                style="box-shadow: 20px 20px 80px rgb(218,218,218); border-radius: 12px;">
+                <div class="card-body pb-0">
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <div class="d-flex flex-column">
+                                <a class="text-dark fs-3 fw-bold ">GDPR</a>
+                                <a class="text-dark fw-bold mt-4">Data Privacy Request</a>
+                                <span class="text-gray-400 fw-bold"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+
+                    <div class="row mt-4 pb-4">
+                        <div class="col-md-4">
+                            <div class="form-check form-check-custom form-check-solid me-10">
+                                <input class="form-check-input h-30px w-30px" type="checkbox" value="display"
+                                    (click)="alert()" />
+                                <label class="form-check-label" for="flexCheckbox30">Display</label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check form-check-custom form-check-solid me-10">
+                                <input class="form-check-input h-30px w-30px" type="checkbox" value="delete"
+                                    (click)="alert()" />
+                                <label class="form-check-label" for="flexCheckbox40">Delete</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check form-check-custom form-check-solid me-10">
+                                <input class="form-check-input h-30px w-30px" type="checkbox" value="delete"
+                                    (click)="alert()" />
+                                <label class="form-check-label" for="flexCheckbox40">Hold</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" value="{{ user?.id }}" id="customer_id">
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-6">
-        <div class="card " id="kt_widget_5" style="box-shadow: 20px 20px 80px rgb(218,218,218); border-radius: 12px;">
-            <div class="card-body pb-0">
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center flex-grow-1">
-                        <div class="d-flex flex-column">
-                            <a class="text-dark fs-3 fw-bold ">GDPR</a>
-                            <a class="text-dark fw-bold mt-4">Data Privacy Request</a>
-                            <span class="text-gray-400 fw-bold"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="separator"></div>
-                
-                <div class="row mt-4 pb-4">
-                    <div class="col-md-4">
-                        <div class="form-check form-check-custom form-check-solid me-10">
-                            <input class="form-check-input h-30px w-30px" type="checkbox" value="display" (click)="alert()"/>
-                            <label class="form-check-label" for="flexCheckbox30" >Display</label>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="form-check form-check-custom form-check-solid me-10">
-                            <input class="form-check-input h-30px w-30px" type="checkbox" value="delete" (click)="alert()"/>
-                            <label class="form-check-label" for="flexCheckbox40" >Delete</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-custom form-check-solid me-10">
-                            <input class="form-check-input h-30px w-30px" type="checkbox" value="delete" (click)="alert()"/>
-                            <label class="form-check-label" for="flexCheckbox40" >Hold</label>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-                
-                <input type="hidden" value="{{ user?.id }}" id="customer_id">
-            </div>
-        </div>
-    </div>
-    
 </div>
-
-    
-    <!-- ... -->
-</div>
-
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Add Customer Notes</span><br>
-                    <!-- <small>Please Update your details</small> -->
+                <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Add
+                        Customer Notes</span><br>
                 </p>
-
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
             </div>
-
             <div class="modal-body">
                 <div class="form-group pt-3">
                     <div class="input-field">
-                        <textarea [(ngModel)]="notes " placeholder="Add Notes" class="form-control" style="border-radius: 10px;"></textarea>
+                        <textarea [(ngModel)]="notes " placeholder="Add Notes" class="form-control"
+                            style="border-radius: 10px;"></textarea>
                     </div>
                 </div>
-                
-             
-                <!-- <small class="text-danger">*Email is Invalid*</small> -->
             </div>
             <div class="modal-footer">
                 <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button (click)="addNotes()" type="button"  class="btn btn-primary" >Add</button>
+                <button (click)="addNotes()" type="button" class="btn btn-primary">Add</button>
             </div>
         </div>
     </div>
 </div>
 
-
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title" id="showModalLabel"> <span style="font-size: 25px;font-weight:700">Customer Notes</span><br>
-                    <!-- <small>Please Update your details</small> -->
-                    
+                <p class="modal-title" id="showModalLabel"> <span style="font-size: 25px;font-weight:700">Customer
+                        Notes</span><br>
                 </p>
-
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
             </div>
-
             <div class="modal-body">
                 <div class="form-group pt-3">
                     <div class="input-field">
@@ -256,21 +230,11 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                
-                                
-                                  
-                                  
-                                  
-                              </div>
-                              
+                            </div>
                         </div>
-                      </div>
-                      
-                      
-                      
+                    </div>
                 </div>
             </div>
-            
             <div class="modal-footer">
                 <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- <button type="button"  class="btn btn-primary">Add</button> -->

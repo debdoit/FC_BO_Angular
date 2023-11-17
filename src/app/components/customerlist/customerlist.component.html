@@ -80,22 +80,13 @@
 showFirstLastButtons
 aria-label="Select page of periodic elements">
 </mat-paginator>
-  
- 
+<div *ngIf="searchAttempted && users.length === 0" style="margin: 20px; color: red;">
+  No data available.
+</div>
+<!-- Pagination controls -->
 
-  
-    <div *ngIf="noDataAvailable && searchAttempted && users.length === 0" style="margin: 20px; color: red;">
-      No data available.
-    </div>
-  </body>
-  <div>
-    <!-- <div *ngIf="users.length > 0" class="pagination">
-      <button [disabled]="currentPage === 1" (click)="previousPage()" style="border: none;"><</button>
-      <span>{{ currentPage }} / {{ totalPages }}</span>
-      <button [disabled]="currentPage === totalPages" (click)="nextPage()" style="border: none;">></button>
-    </div> -->
-    
-  </div>    
+</body>
+
 </html>
 
 
