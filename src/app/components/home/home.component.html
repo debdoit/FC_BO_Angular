@@ -1,43 +1,27 @@
-<!-- <p>home works!</p> -->
-<!-- <div [ngClass]="status ? 'toggled' : "  class="fc_dashboard_wrapper"> -->
+
 <div  class="fc_dashboard_wrapper" id="wrapper" >
-    <!-- Fc side navbar -->
-    <!-- [ngClass]="status ? 'toggled' : ''" -->
-    <div  class="fc_sidenav">
-        <!-- <ng-container *ngIf="role === 'Admin'"> -->
+      <div  class="fc_sidenav">
         <div class="sidenav_logo">
             <a href="home">
                 <img class="logo_img" src="/assets/images/family-central-white.svg" width="106" height="58"
                     alt="Family Central" />
-            </a> &nbsp;&nbsp;
-            <!-- <i class="fas fa-align-left primary-text fs-4 me-3" (click)="addToggle()" id="menu-toggle"></i> -->
+            </a> &nbsp;&nbsp;  
         </div>
-        
         <div  class="sidenav_menu">
             <ul class="menu">
-                <!-- <li>
-            <a [routerLink]="">
-              <img src="/assets/images/dashboard.svg" alt="Home Icon" />
-              <span>My Profile</span></a>
-          </li> -->
-          
-                <li>
+             <li>
                     <a [routerLink]="'myprofile'">
                         <span><i class="fas fa-user"></i></span>
-
                         <span>Profile</span></a>
                 </li>
                 <li>
                     <a [routerLink]="'customerlist'">
                         <span><i class="fas fa-address-book"></i></span>
-
                         <span>Customer List</span></a>
                 </li>
-                
                 <li>
                     <a [routerLink]="'trustedprofessional'">
                         <span><i class="fas fa-list-alt"></i></span>
-
                         <span>TPA List</span></a>
                 </li>
                 <li>
@@ -50,18 +34,15 @@
                         </p>
                     </a>
                 </li>
-                
                 <ng-container *ngIf="role === 'Admin'">
                 <li>
                     <a [routerLink]="'createbclogin'">
                         <span><i class="fas fa-user-plus"></i></span>
-
                         <span>Create BC login</span></a>
                 </li></ng-container>
                 <li>
                     <a>
                         <span><i class="fas fa-sign-out-alt"></i></span>
-
                         <span (click)="logout()">Logout</span>
                     </a>
                 </li>
@@ -82,95 +63,22 @@
             <div class="header_content justify-content-end">
                 <div class="top-nav">
                     <ul class="navbar">
-
-                        <!-- <li ngbDropdown>
-                            <a id="userDropDown" ngbDropdownToggle>
-                                <span class="user_icon user-photos">
-                                    <img src="/assets/images/profile-photo.png" width="40" height="40"
-                                        alt="user icon" />
-                                </span>
-                                
-                            </a>
-
-                            <ul ngbDropdownMenu aria-labelledby="userDropDown" class="userDropDown dropdown-menu">
-                                <li class="dropdown-item">
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li class="dropdown-item">
-                                    <button class="dropdown-link" routerLink="/user/myprofile">
-                                        My Account
-                                    </button>
-                                </li>
-                                <li class="dropdown-item">
-                                    <button class="dropdown-link" routerLink="/executor">
-                                        Executor Account
-                                    </button>
-                                </li>
-
-                            </ul>
-                        </li> -->
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user me-2" style="font-size: 50px;"></i>
                             </a>
-                            
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <!-- <li><a class="dropdown-item" >Profile</a></li> -->
                                 <!-- <li><a class="dropdown-item" >Settings</a></li> -->
                                 <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                             </ul>
-                        </li>
-
-                        <!-- <li ngbDropdown class="family-dropdown">
-                            <a id="userDropDown" ngbDropdownToggle>
-                                <span class="user-name">
-                                    Family</span>
-                            </a>
-                        </li> -->
+                        </li> 
                     </ul>
                 </div>
-
-
             </div>
         </div>
-
         <div class="dynamic_routes" >
             <router-outlet></router-outlet>
         </div>
-
-
-        <!-- <div class="collapse" id="navbarToggle">
-        <div class="sidenav_menu">
-          <ul class="menu">
-            <li>
-              <a [routerLink]=" ">
-                <img src="/assets/images/dashboard.svg" alt="Home Icon" />
-                <span>Home</span></a>
-            </li>
-            <li>
-              <a>
-                <img src="/assets/images/profile-circle.svg" alt="My Profile Icon" />
-                <span>My Profile</span></a>
-            </li>
-            <li class="onboarding_tools">
-              <a><span>5 Quick Onboarding Tools</span></a>
-            </li>
-            <li class="contactus">
-              <a>ContactUs</a>
-            </li>
-            <li>
-              <a>
-                <img src="/assets/images/logout.svg" alt="Logout Icon" />
-                <span>Logout</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> -->
-
-
     </div>
 </div>

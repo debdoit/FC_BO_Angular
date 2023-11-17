@@ -4,6 +4,13 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GetcustomerdetailsService } from 'src/app/services/getcustomerdetails.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
+
 
 
 
@@ -21,11 +28,11 @@ export class MyprofileComponent {
   public FirstName!:string;
   public LastName!:string;
   public Email!:string;
-  public Contact_No!:string;
+  public Contact!:string;
   public Id!:string;
-
+   
   // public Id: string = "";
-  constructor(private auth: AuthService, private userStore: UserStoreService, private route: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(private auth: AuthService, private userStore: UserStoreService, private route: ActivatedRoute, private modalService: NgbModal,private GetcustomerdetailsService: GetcustomerdetailsService,private http: HttpClient) { }
  
   ngOnInit() {
     this.userStore.getFullNameFromStore().subscribe(fullName => {
@@ -40,6 +47,8 @@ export class MyprofileComponent {
       console.log('Full Name in Component:', this.fullName);
       
     });
+
+   
 
     this.userStore.getUsernameFromStore()
     .subscribe(val=>{
@@ -96,11 +105,11 @@ export class MyprofileComponent {
 
     this.userStore.getContact_NoFromStore()
     .subscribe(val=>{
-      console.log('Contact_no Store:', val);
+      console.log('Contact Store:', val);
       const contactnoFromToken = this.auth.getcontactnoFromToken();
-      this.Contact_No = val || contactnoFromToken;
+      this.Contact = val || contactnoFromToken;
 
-      console.log('Contact_No From Store:', this.Contact_No );
+      console.log('Contact_No From Store:', this.Contact );
     });
 
 
@@ -116,7 +125,59 @@ export class MyprofileComponent {
   }
 
 
- 
 
+  updateProfile() {
+    // Prepare the updated user data to send to the server
+    const updatedUser = {
+      firstName: this.FirstName,
+      lastName: this.LastName,
+      contact: this.Contact,
+      email: this.Email,
+    };
   
-}
+    // Assuming 'id' is the identifier of the user you want to update
+    const Id = parseInt(this.Id, 10); // Use parseInt to convert string to number
+  
+    // Call the updateUserProfile method with the user ID and updated data
+    this.GetcustomerdetailsService.updateUserProfile(Id, updatedUser)
+      .subscribe(
+        response => {
+          // Handle the response from the server if needed
+          console.log('Update successful:', response);
+           // Show SweetAlert success message
+        this.showSuccessAlert();
+        },
+        error => {
+          // Handle the error if the update fails
+          console.error('Update failed:', error);
+  
+          if (error instanceof HttpErrorResponse) {
+            // Handle HTTP errors (status codes) differently if needed
+            if (error.status === 415) {
+              console.error('Unsupported Media Type - Check request format.');
+            } else {
+              console.error('Other HTTP error:', error.statusText);
+            }
+          } else {
+            // Handle other types of errors
+            console.error('Unexpected error:', error);
+          }
+        }
+      );
+  }
+
+  showSuccessAlert() {
+    // Use SweetAlert2 to show a success message
+    Swal.fire({
+      title: 'Update Successful',
+      text: 'Your profile has been updated successfully!',
+      icon: 'success',
+      showConfirmButton: false,
+      didClose: () => {
+        location.reload();
+      }
+    });
+  }
+  
+  
+}  
