@@ -4,32 +4,33 @@
         <h1 class="heading">My Profile</h1>
       </div>
         <div class="account" style="border-radius: 20px;">
-          <div class="label-group">
+          <div class="label-group" *ngIf="user">
             <label>Fast Name</label>
-            <p>{{ FirstName }}</p>
+            <p>{{ user.firstName }}</p>
           </div>
+          
           <div class="label-group">
             <label>Last Name</label>
-            <p>{{ LastName }}</p>
+            <p>{{ user.lastName }}</p>
           </div>
           <div class="label-group">
             <label>User Name</label>
-            <p>{{ Username }}</p>
+            <p>{{ user.username }}</p>
           </div>
           <div class="label-group">
             <label>Phone number</label>
-            <p>{{Contact}}</p>
+            <p>{{user.contact}}</p>
           </div>
           <div class="label-group">
             <label>Email</label>
-            <p>{{Email}}</p>
+            <p>{{user.email}}</p>
           </div>
          
           <div class="label-group">
             <label>Role</label>
-            <p>{{role}}</p>
+            <p>{{user.role}}</p>
           </div>
-          <input type="hidden" value="{{Id}}">
+          <input type="hidden"  value="{{user.id}}">
           
           
           <button  class="primary_btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>  
@@ -55,28 +56,28 @@
                     <!-- First Name -->
                     <div class="form-group pt-3">
                       <div class="input-field">
-                          <input type="text" placeholder="First Name" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="FirstName" >
+                          <input type="text" placeholder="First Name" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="user.firstName " >
                       </div>
                     </div>
 
                     <!-- Last Name -->
                     <div class="form-group pt-3">
                       <div class="input-field">
-                          <input type="text" placeholder="Last Name" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="LastName">
+                          <input type="text" placeholder="Last Name" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="user.lastName">
                       </div>
                     </div>
 
                     <!-- Phone Number -->
                     <div class="form-group pt-3">
                       <div class="input-field">
-                          <input type="text" placeholder="Phone Number" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="Contact">
+                          <input type="text" placeholder="Phone Number" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="user.contact">
                       </div>
                     </div>
 
                     <!-- Email -->
                     <div class="form-group pt-3">
                       <div class="input-field">
-                          <input type="text" placeholder="Email" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="Email">
+                          <input type="text" placeholder="Email" class="form-control form-control" style="border-radius: 10px;" [(ngModel)]="user.email">
                       </div>
                     </div>
 
