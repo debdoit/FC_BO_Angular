@@ -48,6 +48,14 @@
                                 </div>
                             </div>
                             <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')" class="text-danger">*Password is required</small>
+                            <div class="form-group pt-2">
+                                <div class="input-field" style="border-radius: 20px;">
+                                    <span class="fa fa-user-plus p-2"></span>
+                                    <input formControlName="Role" type="text" placeholder="Role">
+                                </div>
+                            </div>
+                            <small *ngIf="signupForm.controls['Role'].dirty && signupForm.hasError('required','Role')" class="text-danger">*Role is required</small>
+                            
                             <div class="text-center pt-2">
 
                                 <button (click)="onSignup()" type="submit" class="btn btn-primary btn-block mt-1 w-50">Signup</button>

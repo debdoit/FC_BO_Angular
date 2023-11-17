@@ -30,6 +30,7 @@ export class CreatebcloginComponent implements OnInit {
     this.signupForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      Role: ['', Validators.required],
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]], // Added email validation
       password: ['', [Validators.required, Validators.minLength(6)]] // Added password validation
