@@ -15,6 +15,13 @@
     width: 100%;
   }
 
+  .table-container {
+    /* Add your styling here */
+    border: 1px solid #ccc; /* Example border styling */
+    padding: 10px; /* Example padding */
+  }
+  
+
   .content-table th, .content-table td {
     padding: 10px;
     border: 1px solid #ccc;

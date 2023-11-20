@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
 // import { UserStoreService } from 'src/app/services/user-store.service';
 import Swal from 'sweetalert2';
 
@@ -16,14 +17,24 @@ export class CustomerDashboardComponent implements OnInit {
   user: any; // Define a user variable to store the fetched user details
   shownotes: any; // Define a 'notes' property to store the data
   notes: string = '';
+  gdprData: any; // Declare gdprData variable
+  gdprForm: FormGroup;
+
 // JSON: any;
  
 // note: any;
   constructor(
     private route: ActivatedRoute,
     private GetcustomerdetailsService: GetcustomerdetailsService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
+    this.gdprForm = this.fb.group({
+      display: false,
+      delete: false,
+      hold: false
+    });
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -37,12 +48,26 @@ export class CustomerDashboardComponent implements OnInit {
          this.GetcustomerdetailsService.getCustomerNotes(userId).subscribe((notesData) => {
           this.shownotes = notesData; // Assign the fetched notes to the notes variable
           console.log("note data :",notesData); 
+
+          
          
         });
-
+        this.GetcustomerdetailsService.getGDPR(userId).subscribe((GDPRData) => {
+          this.gdprData = GDPRData;
+          console.log("GDPR data:", GDPRData);
+          if (this.gdprData) {
+            this.gdprForm.setValue({
+              display: this.gdprData.display,
+              delete: this.gdprData.delete,
+              hold: this.gdprData.hold
+            });
+          }
+        });
       }
     });
   }
+
+  
 
   getInitials(name: string): string {
     const words = name.split(' ');
@@ -94,70 +119,50 @@ export class CustomerDashboardComponent implements OnInit {
   }
   
   
-  
-  
+  // Update GDPR preferences
+  updateGDPR(updateType: string): void {
+    if (!this.gdprForm) {
+      console.error('GDPR form not available.');
+      return;
+    }
 
- 
+    const isChecked = this.gdprForm.get(updateType)?.value;
 
-  alert(){
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'GDPR will be updated.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Update',
-      cancelButtonText: 'Cancel',
-      // input: 'text',
-      // inputPlaceholder: 'Enter your reason here',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const reason = result.value;
-        if (reason) {
-          // Perform the API request to update GDPR with the reason provided
-          fetch('https://localhost:7127/api/GDPRCustomer/UpdateGDPRCustomer/', {
-            method: 'POST', // You may need to use the appropriate HTTP method
-            headers: {
-              'Content-Type': 'application/json', // Adjust the content type as needed
-            },
-            body: JSON.stringify({ reason: reason }), // Pass the reason as JSON data
-          })
-            .then((response) => {
-              if (response.ok) {
-                // Successful update, you can handle the response as needed
-                location.reload();
-              } else {
-                // Handle the API error
-                console.error('API request failed');
-                Swal.fire('Error', 'Failed to update GDPR.', 'error');
-              }
-            })
-            .catch((error) => {
-              // Handle network or other errors
-              console.error(error);
-              Swal.fire('Error', 'Failed to update GDPR.', 'error');
-            });
-        } else {
-          Swal.fire({
-            title: 'Error',
-            text: 'Please enter a reason for the update.',
-            icon: 'error',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              location.reload();
-            }
-          });
-          
-          
-        }
-      } else {
-        // User clicked "Cancel," no action needed
-        location.reload();
+    this.gdprForm.disable();
+
+    const updateValue = isChecked ? 0 : 1;
+
+    this.GetcustomerdetailsService.updateGDPR(this.gdprData.customeR_ID, updateType, updateValue).subscribe({
+      next: (response) => {
+        this.gdprData[updateType] = updateValue === 1;
+        console.log("GDPR updated for user", this.gdprData.customeR_ID, "with updateType", updateType, "and updateValue", updateValue, response);
+
+        Swal.fire({
+          title: 'GDPR Updated!',
+          text: 'GDPR preferences have been successfully updated.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+          didClose: () => {
+            location.reload();
+          }
+        });
+        
+      },
+      error: (error) => {
+        console.error('Error updating GDPR:', error);
+
+        Swal.fire({
+          title: 'Error Updating GDPR',
+          text: 'There was an error updating GDPR preferences.',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      complete: () => {
+        this.gdprForm.enable();
       }
     });
-
   }
-
-
-  
-
 }

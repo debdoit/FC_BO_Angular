@@ -141,28 +141,24 @@
                     <div class="row mt-4 pb-4">
                         <div class="col-md-4">
                             <div class="form-check form-check-custom form-check-solid me-10">
-                                <input class="form-check-input h-30px w-30px" type="checkbox" value="display"
-                                    (click)="alert()" />
+                                <input class="form-check-input h-30px w-30px" type="checkbox" [(ngModel)]="gdprData.display" (change)="updateGDPR('display')" />
                                 <label class="form-check-label" for="flexCheckbox30">Display</label>
-
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-check form-check-custom form-check-solid me-10">
-                                <input class="form-check-input h-30px w-30px" type="checkbox" value="delete"
-                                    (click)="alert()" />
+                                <input class="form-check-input h-30px w-30px" type="checkbox" [(ngModel)]="gdprData.delete" (change)="updateGDPR('delete')" />
                                 <label class="form-check-label" for="flexCheckbox40">Delete</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-check form-check-custom form-check-solid me-10">
-                                <input class="form-check-input h-30px w-30px" type="checkbox" value="delete"
-                                    (click)="alert()" />
-                                <label class="form-check-label" for="flexCheckbox40">Hold</label>
+                                <input class="form-check-input h-30px w-30px" type="checkbox" [(ngModel)]="gdprData.hold" (change)="updateGDPR('hold')" />
+                                <label class="form-check-label" for="flexCheckbox50">Hold</label>
                             </div>
                         </div>
-
                     </div>
+                    
 
                     <input type="hidden" value="{{ user?.id }}" id="customer_id">
                 </div>

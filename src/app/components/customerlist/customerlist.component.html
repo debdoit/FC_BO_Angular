@@ -38,42 +38,45 @@
       <mat-label>Filter</mat-label>
       <input matInput placeholder="Filter" (keyup)="Filterchange($event)">
     </mat-form-field>
-    <table *ngIf="users.length > 0" mat-table matSort [dataSource]="dataSource" id="yourDataTableId">
-
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let user"><a [routerLink]="['/home/customerdashboard', user.id]" style="text-transform: uppercase;">{{ user.id }}</a></td>
-      </ng-container>
+    <div class="table-container">
+      <table *ngIf="users.length > 0" mat-table matSort [dataSource]="dataSource" id="yourDataTableId">
     
-      <!-- First Name Column -->
-      <ng-container matColumnDef="firstname">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef>FIRST NAME</th>
-        <td mat-cell *matCellDef="let user">{{ user.firstname }}</td>
-      </ng-container>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let user"><a [routerLink]="['/home/customerdashboard', user.id]" style="text-transform: uppercase;">{{ user.id }}</a></td>
+        </ng-container>
     
-      <!-- Last Name Column -->
-      <ng-container matColumnDef="lastname">
-        <th mat-header-cell  mat-sort-header *matHeaderCellDef>LAST NAME</th>
-        <td mat-cell *matCellDef="let user">{{ user.lastname }}</td>
-      </ng-container>
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>FIRST NAME</th>
+          <td mat-cell *matCellDef="let user">{{ user.firstname }}</td>
+        </ng-container>
     
-      <!-- Role Column -->
-      <ng-container matColumnDef="rolename">
-        <th mat-header-cell  mat-sort-header *matHeaderCellDef>ROLE</th>
-        <td mat-cell *matCellDef="let user">{{ user.rolename }}</td>
-      </ng-container>
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastname">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>LAST NAME</th>
+          <td mat-cell *matCellDef="let user">{{ user.lastname }}</td>
+        </ng-container>
     
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef>EMAIL</th>
-        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
-      </ng-container>
+        <!-- Role Column -->
+        <ng-container matColumnDef="rolename">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>ROLE</th>
+          <td mat-cell *matCellDef="let user">{{ user.rolename }}</td>
+        </ng-container>
     
-      <!-- Define columns -->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>EMAIL</th>
+          <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+        </ng-container>
+    
+        <!-- Define columns -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    
   
 </div>
 <mat-paginator  [pageSizeOptions]="[5, 10, 20]"

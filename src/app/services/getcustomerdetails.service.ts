@@ -12,6 +12,8 @@ export class GetcustomerdetailsService {
   private AddnotesAPIURL = 'https://localhost:7127/api/getCustomerNotes/AddCustomerNotes';
   private UpdateAPIURL = 'https://localhost:7127/api/User/update-profile/';
   private getAPIURL = 'https://localhost:7127/api/User/get-user/';
+  private GDPRURL = 'https://localhost:7127/api/GDPRCustomer/UpdateGDPRCustomer/';
+  private getGDPRURL = 'https://localhost:7127/api/GDPRCustomer/';
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +31,37 @@ export class GetcustomerdetailsService {
     const apiUrl = `${this.getAPIURL}${Id}`;
     return this.http.get(apiUrl);
   }
+  getGDPR(Id: string): Observable<any> {
+    const apiUrl = `${this.getGDPRURL}${Id}`;
+    return this.http.get(apiUrl);
+  }
+
+  updateGDPR(userId: string, updateType: string, updateValue: number): Observable<any> {
+    const apiUrl = `${this.GDPRURL}${userId}`;
+  
+    // Create an object with the updateType and updateValue
+    const requestBody = {
+      updateType: updateType,
+      updateValue: updateValue
+    };
+  
+    // Set the Content-Type header within the request
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      responseType: 'text' as const, // Specify the responseType here
+    };
+  
+    // Use the httpOptions and stringify the requestBody when making the request
+    return this.http.put(apiUrl, requestBody, httpOptions);
+
+  }
+  
+  
+  
+  
+  
   
 
   AddCustomerNotes(data: { customerId: string, notes: string }): Observable<any> {
