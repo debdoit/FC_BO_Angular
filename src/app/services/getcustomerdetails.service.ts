@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class GetcustomerdetailsService {
 
-  private apiUrl = 'https://localhost:7127/api/UserSearch/customer-details';
-  private notesApiUrl = 'https://localhost:7127/api/getCustomerNotes/GetCustomerNotes';
-  private AddnotesAPIURL = 'https://localhost:7127/api/getCustomerNotes/AddCustomerNotes';
-  private UpdateAPIURL = 'https://localhost:7127/api/User/update-profile/';
-  private getAPIURL = 'https://localhost:7127/api/User/get-user/';
-  private GDPRURL = 'https://localhost:7127/api/GDPRCustomer/UpdateGDPRCustomer/';
-  private getGDPRURL = 'https://localhost:7127/api/GDPRCustomer/';
+  private apiUrl = 'https://familycentraladminapi.azurewebsites.net/api/UserSearch/customer-details';
+  private notesApiUrl = 'https://familycentraladminapi.azurewebsites.net/api/getCustomerNotes/GetCustomerNotes';
+  private AddnotesAPIURL = 'https://familycentraladminapi.azurewebsites.net/api/getCustomerNotes/AddCustomerNotes';
+  private UpdateAPIURL = 'https://familycentraladminapi.azurewebsites.net/api/User/update-profile/';
+  private getAPIURL = 'https://familycentraladminapi.azurewebsites.net/api/User/get-user/';
+  private GDPRURL = 'https://familycentraladminapi.azurewebsites.net/api/GDPRCustomer/UpdateGDPRCustomer/';
+  private getGDPRURL = 'https://familycentraladminapi.azurewebsites.net/api/GDPRCustomer/';
 
   constructor(private http: HttpClient) {}
 

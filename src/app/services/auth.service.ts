@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string = "https://localhost:7127/api/User/";
+  private baseUrl: string = "https://familycentraladminapi.azurewebsites.net/api/User/";
   private userPayload:any;
 
   constructor(private http: HttpClient, private router: Router) {
